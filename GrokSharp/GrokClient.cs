@@ -33,6 +33,15 @@ namespace GrokSharp
             return response;
         }
 
+        public async Task<HttpResponseMessage> GetModelsAsync()
+        {
+            string URL = "/v1/models";
+
+            var response = await _http.GetAsync(URL);
+
+            return response;
+        }
+
         #region helper functions
 
         /// <summary>

@@ -37,5 +37,15 @@ namespace Test
         {
             Assert.That(_client.ApiKey, Is.EqualTo(_bearerToken));
         }
+
+        [Test]
+        public void GetModels()
+        {
+            var msg = _client.GetModelsAsync().Result;
+            Assert.That(msg.IsSuccessStatusCode, Is.True);
+
+            string contentAsString = msg.Content.ReadAsStringAsync().Result;
+            Assert.That(contentAsString, Is.Not.Null);
+        }
     }
 }
