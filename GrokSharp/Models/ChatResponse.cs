@@ -62,6 +62,7 @@ namespace GrokSharp.Models
         /// <summary>
         /// Gets or sets the reason why the response generation stopped, e.g., "stop".
         /// </summary>
+        [JsonProperty("finish_reason")]
         public string FinishReason { get; set; }
     }
 

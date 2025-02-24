@@ -22,6 +22,14 @@ namespace Test
         [TestCase("chatResponse.00.json", 1728646283)]
         public void CreatedAt(string f, long expected) => AssertAreEqual<ChatResponse>(f, expected, chatResponse => chatResponse?.Created);
 
+        [TestCase("chatResponse.00.json", 0, "assistant")]
+        public void ChoiceRole(string f, int i, string expected) => AssertAreEqual<ChatResponse>(f, expected, chatResponse => chatResponse?.Choices[i]?.Message?.Role);
+
+        [TestCase("chatResponse.00.json", 0, "Hello! How can I assist you today?")]
+        public void ChoiceContent(string f, int i, string expected) => AssertAreEqual<ChatResponse>(f, expected, chatResponse => chatResponse?.Choices[i]?.Message?.Content);
+
+        [TestCase("chatResponse.00.json", 0, "stop")]
+        public void ChoiceFinishReason(string f, int i, string expected) => AssertAreEqual<ChatResponse>(f, expected, chatResponse => chatResponse?.Choices[i]?.FinishReason);
 
         [TestCase("chatResponse.00.json", 15)]
         public void UsagePromptTokens(string f, long expected) => AssertAreEqual<ChatResponse>(f, expected, chatResponse => chatResponse?.Usage?.PromptTokens);
