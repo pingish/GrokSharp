@@ -29,5 +29,11 @@ namespace Test
         {
             AssertAreEqual<ChatResponse>(f, expected, chatResponse => chatResponse?.Created);
         }
+
+        [TestCase("chatResponse.00.json", "fp_9877325691")]
+        public void SystemFingerprint(string f, string expected)
+        {
+            AssertAreEqual<ChatResponse>(f, expected, chatResponse => chatResponse?.SystemFingerprint);
+        }
     }
 }

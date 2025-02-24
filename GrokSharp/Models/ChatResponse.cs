@@ -1,4 +1,6 @@
-﻿namespace GrokSharp.Models
+﻿using Newtonsoft.Json;
+
+namespace GrokSharp.Models
 {
     /// <summary>
     /// Represents a chat completion response from the xAI Grok API.
@@ -38,6 +40,7 @@
         /// <summary>
         /// Gets or sets a unique identifier for the system configuration used in the response.
         /// </summary>
+        [JsonProperty("system_fingerprint")]
         public string SystemFingerprint { get; set; }
     }
 
