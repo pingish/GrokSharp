@@ -13,4 +13,8 @@
     <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GrokSharp\GrokSharp.csproj" />
+  </ItemGroup>
+
 </Project>
