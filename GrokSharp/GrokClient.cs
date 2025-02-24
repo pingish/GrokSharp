@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using GrokSharp.Models;
-using System.Text;
+﻿using GrokSharp.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Text;
 
 namespace GrokSharp
 {
@@ -12,7 +12,10 @@ namespace GrokSharp
         public GrokClient(HttpClient httpClientWithBearerToken)
         {
             _http = httpClientWithBearerToken;
+            _http.BaseAddress = new Uri("https://api.x.ai/");
         }
+
+        public string? ApiKey => _http?.DefaultRequestHeaders?.Authorization?.ToString().Replace("Bearer ", "");
 
         /// <summary>
         /// HTTP POST to /v1/chat/completions
