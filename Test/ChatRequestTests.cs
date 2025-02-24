@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Test
 {
     [TestFixture]
-    public class ChatRequestTests : LocalTests
+    internal class ChatRequestTests : LocalTests
     {
 
         [TestCase("chatRequest.00.json", "grok-2-latest")]
