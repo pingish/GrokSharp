@@ -1,6 +1,8 @@
 # GrokClient: C# Client for xAI's Grok
 
-**GrokClient** is a lightweight, idiomatic C# library designed to interact with xAI's Grok API. Built for .NET 8.0, it provides a simple and efficient way to integrate Grok's AI capabilities into your C# applications.
+**GrokClient** is going to be a lightweight, idiomatic C# library designed to interact with xAI's Grok API. Built for .NET 8.0, it provides a simple and efficient way to integrate Grok's AI capabilities into your C# applications.
+
+This project is not fully-baked as of Feb 2025.
 
 ## Features
 
@@ -11,7 +13,4 @@
 
 ## Installation
 
-### Via NuGet
-Install the package using the .NET CLI:
-```bash
-dotnet add package GrokClient --version 1.0.0
+I'm just writing this for now, so there's no Nuget package.
