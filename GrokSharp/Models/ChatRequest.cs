@@ -35,7 +35,7 @@
         /// Model name for the model to use.
         /// </summary>
         [JsonProperty("model")]
-        public string Model { get; set; }
+        public string Model { get; set; } = "grok-2-latest";
 
         /// <summary>
         /// If set, partial message deltas will be sent. Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a `data: [DONE]` message.
