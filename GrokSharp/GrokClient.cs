@@ -26,7 +26,7 @@ namespace GrokSharp
         {
             string URL_CHAT = "/v1/chat/completions";
 
-            var payload = getPayload(chatRequest);
+            var payload = getPayload(chatRequest.ToJson());
 
             var response = await _http.PostAsync(URL_CHAT, payload);
 
@@ -52,14 +52,10 @@ namespace GrokSharp
         /// <remarks>
         /// The serialization uses default Newtonsoft.Json settings. To use camelCase property names, configure a <see cref="JsonSerializerSettings"/> with a <see cref="CamelCasePropertyNamesContractResolver"/>.
         /// </remarks>
-        HttpContent getPayload(object chatRequest)
+        HttpContent getPayload(string jsonPayload)
         {
-            var settings = new JsonSerializerSettings
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
-            string jsonPayload = JsonConvert.SerializeObject(chatRequest, settings);
             var payload = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
             return payload;
         }
 

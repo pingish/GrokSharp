@@ -36,6 +36,15 @@ namespace Test
             AssertAreEqual<ChatRequest>(f, expected, chatRequest => chatRequest?.Messages[i]?.Content);
         }
 
+        [TestCase("what is hexcolor for black?")]
+        public void ConstructBasicPrompt(string prompt)
+        {
+            var chatRequest = new ChatRequest(prompt);
+
+            string json = chatRequest.ToJson();
+            Assert.That(prompt, Is.EqualTo(chatRequest.Messages[0].Content));
+        }
+
 
 
     }
