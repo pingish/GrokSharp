@@ -19,22 +19,19 @@ I'm just writing this for now, so there's no Nuget package.
 
 ### Instantiating a GrokClient
 ```csharp
- 
- string xAI_API_KEY; // your xAI API Key from https://console.x.ai
- var http = new HttpClient(); // create new HttpClient
- http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", xAI_API_KEY);
+string xAI_API_KEY; // your xAI API Key from https://console.x.ai
+var http = new HttpClient(); // create new HttpClient
+http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", xAI_API_KEY);
 
- // inject HttpClient into GrokClient
- var grokClient = new GrokClient(http);
-
+// inject HttpClient into GrokClient
+var grokClient = new GrokClient(http);
 ```
 
 ### Making a call to Grok
 ```csharp
+// construct a request from a prompt
+var chatRequest = new ChatRequest(prompt);
 
-  // construct a request from a prompt
-  var chatRequest = new ChatRequest(prompt);
-
-  // making HTTP POST to the /chat/completion endpoint returns a ChatResponse object
-  var chatResponse = grokClient.GetChatCompletionAsync(chatRequest).Result;
+// making HTTP POST to the /chat/completion endpoint returns a ChatResponse object
+var chatResponse = grokClient.GetChatCompletionAsync(chatRequest).Result;
 ```
