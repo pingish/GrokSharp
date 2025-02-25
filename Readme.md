@@ -27,9 +27,6 @@ I'm just writing this for now, so there's no Nuget package.
  // inject HttpClient into GrokClient
  var grokClient = new GrokClient(http);
 
-  var chatRequest = new ChatRequest(prompt);
-            string requestJson = chatRequest.ToJson();
-            var chatResponse = _client.GetChatCompletionAsync(chatRequest).Result;
 ```
 
 ### Making a call to Grok
