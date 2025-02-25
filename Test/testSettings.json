@@ -1,5 +1,0 @@
-{
-    "GrokApi": {
-        "BearerToken": "Your Key Here" // get from https://console.x.ai/
-    }
-}
