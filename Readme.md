@@ -18,6 +18,8 @@ I'm just writing this for now, so there's no Nuget package.
 ## Usage
 
 ### Instantiating a GrokClient
+The `GrokClient` is constructed by injecting an `HttpClient`.  This `HttpClient` needs to have a bearer token that is the API key gotten from xAI.
+
 ```csharp
 string xAI_API_KEY; // your xAI API Key from https://console.x.ai
 var http = new HttpClient(); // create new HttpClient
@@ -28,6 +30,7 @@ var grokClient = new GrokClient(http);
 ```
 
 ### Making a call to Grok
+There is a method, `GetChatCompletionAsync()`, that makes the call to Grok.
 ```csharp
 // construct a request from a prompt
 var chatRequest = new ChatRequest(prompt);
