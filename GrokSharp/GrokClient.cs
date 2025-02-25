@@ -22,15 +22,21 @@ namespace GrokSharp
         /// </summary>
         /// <param name="chatRequest"></param>
         /// <returns></returns>
-        public async Task<HttpResponseMessage> GetChatCompletionAsync(ChatRequest chatRequest)
+        public async Task<ChatResponse> GetChatCompletionAsync(ChatRequest chatRequest)
         {
             string URL_CHAT = "/v1/chat/completions";
 
             var payload = getPayload(chatRequest.ToJson());
 
-            var response = await _http.PostAsync(URL_CHAT, payload);
+            var msg = await _http.PostAsync(URL_CHAT, payload);
 
-            return response;
+            msg.EnsureSuccessStatusCode();
+
+            string json = await msg.Content.ReadAsStringAsync();
+
+            var chatResponse = JsonConvert.DeserializeObject<ChatResponse>(json);
+
+            return chatResponse;
         }
 
         public async Task<HttpResponseMessage> GetModelsAsync()

@@ -1,4 +1,5 @@
 ﻿using GrokSharp;
+using GrokSharp.Models;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System.Net.Http.Headers;
@@ -46,6 +47,15 @@ namespace Test
 
             string contentAsString = msg.Content.ReadAsStringAsync().Result;
             Assert.That(contentAsString, Is.Not.Null);
+        }
+
+        [TestCase("Who let the dogs out?")]
+        public void ChatCompletion(string prompt)
+        {
+            var chatRequest = new ChatRequest(prompt);
+            string requestJson = chatRequest.ToJson();
+            var chatResponse = _client.GetChatCompletionAsync(chatRequest).Result;
+            string responseJson = chatResponse.ToJson();
         }
     }
 }
