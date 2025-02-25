@@ -14,3 +14,30 @@ This project is not fully-baked as of Feb 2025.
 ## Installation
 
 I'm just writing this for now, so there's no Nuget package.
+
+## Usage
+
+### Instantiating a GrokClient
+```csharp
+ 
+ string xAI_API_KEY; // your xAI API Key from https://console.x.ai
+ var http = new HttpClient(); // create new HttpClient
+ http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", xAI_API_KEY);
+
+ // inject HttpClient into GrokClient
+ var grokClient = new GrokClient(http);
+
+  var chatRequest = new ChatRequest(prompt);
+            string requestJson = chatRequest.ToJson();
+            var chatResponse = _client.GetChatCompletionAsync(chatRequest).Result;
+```
+
+### Making a call to Grok
+```csharp
+
+  // construct a request from a prompt
+  var chatRequest = new ChatRequest(prompt);
+
+  // making HTTP POST to the /chat/completion endpoint returns a ChatResponse object
+  var chatResponse = grokClient.GetChatCompletionAsync(chatRequest).Result;
+```
