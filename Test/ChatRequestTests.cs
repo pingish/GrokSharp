@@ -20,5 +20,23 @@ namespace Test
             AssertAreEqual<ChatRequest>(f, expected, chatRequest => chatRequest?.Temperature);
         }
 
-    }  
+        [TestCase("chatRequest.00.json", 0, "system")]
+        [TestCase("chatRequest.00.json", 1, "user")]
+
+        public void MessageRole(string f, int i, object expected)
+        {
+            AssertAreEqual<ChatRequest>(f, expected, chatRequest => chatRequest?.Messages[i]?.Role);
+        }
+
+        [TestCase("chatRequest.00.json", 0, "You're an assistant")]
+        [TestCase("chatRequest.00.json", 1, "Hi")]
+
+        public void MessageContent(string f, int i, object expected)
+        {
+            AssertAreEqual<ChatRequest>(f, expected, chatRequest => chatRequest?.Messages[i]?.Content);
+        }
+
+
+
+    }
 }
