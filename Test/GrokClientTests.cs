@@ -19,12 +19,18 @@ namespace Test
 
             folder = Path.Combine(folder, "..\\..\\..\\");
 
+            string path = Path.Combine(folder, "testSettings.json");
+
+            if (!Path.Exists(path))
+                throw new FileNotFoundException("This integration test requires a Test/testSettings.json file that contains the API KEY");
+
             var config = new ConfigurationBuilder()
                 .SetBasePath(folder)
                 .AddJsonFile("testSettings.json", optional: false)
                 .Build();
 
             _bearerToken = config["GrokApi:BearerToken"];
+
             Assert.That(_bearerToken, Is.Not.Null, "Bearer token not found in appsettings.json.");
 
             var httpClient = new HttpClient();
