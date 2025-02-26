@@ -55,6 +55,16 @@ namespace Test
             Assert.That(contentAsString, Is.Not.Null);
         }
 
+        [Test]
+        public void GetApiKey()
+        {
+            var msg = _client.GetApiKeyAsync().Result;
+            Assert.That(msg.IsSuccessStatusCode, Is.True);
+
+            string contentAsString = msg.Content.ReadAsStringAsync().Result;
+            Assert.That(contentAsString, Is.Not.Null);
+        }
+
         [TestCase("Who let the dogs out?")]
         public void ChatCompletion(string prompt)
         {
@@ -63,5 +73,7 @@ namespace Test
             var chatResponse = _client.GetChatCompletionAsync(chatRequest).Result;
             string responseJson = chatResponse.ToJson();
         }
+
+
     }
 }

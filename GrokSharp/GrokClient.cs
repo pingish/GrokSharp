@@ -17,6 +17,7 @@ namespace GrokSharp
 
         public string? ApiKey => _http?.DefaultRequestHeaders?.Authorization?.ToString().Replace("Bearer ", "");
 
+
         /// <summary>
         /// HTTP POST to /v1/chat/completions
         /// </summary>
@@ -39,6 +40,23 @@ namespace GrokSharp
             return chatResponse;
         }
 
+        /// <summary>
+        /// HTTP GET /v1/api-key
+        /// </summary>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> GetApiKeyAsync()
+        {
+            string URL = "/v1/api-key";
+
+            var response = await _http.GetAsync(URL);
+
+            return response;
+        }
+
+        /// <summary>
+        /// HTTP GET /v1/models
+        /// </summary>
+        /// <returns></returns>
         public async Task<HttpResponseMessage> GetModelsAsync()
         {
             string URL = "/v1/models";
